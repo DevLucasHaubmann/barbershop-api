@@ -24,7 +24,7 @@ public class UserEntity {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email", nullable = false)
     private String email;
 
     @Column(name = "password", nullable = false)
@@ -43,83 +43,18 @@ public class UserEntity {
     @Column(name = "active", nullable = false)
     private Boolean active;
 
-    public UserEntity() {}
+    public UserEntity(){}
 
-    private UserEntity(Builder builder) {
-        this.id = builder.id;
-        this.firstName = builder.firstName;
-        this.lastName = builder.lastName;
-        this.email = builder.email;
-        this.password = builder.password;
-        this.ddd = builder.ddd;
-        this.phoneNumber = builder.phoneNumber;
-        this.role = builder.role;
-        this.active = builder.active;
-    }
-
-    public static Builder builder() {
-        return new Builder();
-    }
-
-    public static class Builder {
-        private Long id;
-        private String firstName;
-        private String lastName;
-        private String email;
-        private String password;
-        private String ddd;
-        private String phoneNumber;
-        private UserRoles role;
-        private Boolean active;
-
-        public Builder id(Long id) {
-            this.id = id;
-            return this;
-        }
-
-        public Builder firstName(String firstName) {
-            this.firstName = firstName;
-            return this;
-        }
-
-        public Builder lastName(String lastName) {
-            this.lastName = lastName;
-            return this;
-        }
-
-        public Builder email(String email) {
-            this.email = email;
-            return this;
-        }
-
-        public Builder password(String password) {
-            this.password = password;
-            return this;
-        }
-
-        public Builder ddd(String ddd) {
-            this.ddd = ddd;
-            return this;
-        }
-
-        public Builder phoneNumber(String phoneNumber) {
-            this.phoneNumber = phoneNumber;
-            return this;
-        }
-
-        public Builder role(UserRoles role) {
-            this.role = role;
-            return this;
-        }
-
-        public Builder active(Boolean active) {
-            this.active = active;
-            return this;
-        }
-
-        public UserEntity build() {
-            return new UserEntity(this);
-        }
+    public UserEntity(Long id, String firstName, String lastName, String email, String password, String ddd, String phoneNumber, UserRoles role, Boolean active) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.ddd = ddd;
+        this.phoneNumber = phoneNumber;
+        this.role = role;
+        this.active = active;
     }
 
     public Long getId() { return id; }
