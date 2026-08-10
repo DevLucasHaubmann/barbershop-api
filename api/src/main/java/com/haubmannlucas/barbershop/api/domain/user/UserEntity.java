@@ -6,11 +6,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import org.hibernate.annotations.Audited;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity(name = "Users")
-@Audited.Table(name = "users")
+@Table(name = "users")
 public class UserEntity {
 
     @Id
