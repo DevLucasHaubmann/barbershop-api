@@ -3,6 +3,8 @@ package com.haubmannlucas.barbershop.api.domain.user;
 import com.haubmannlucas.barbershop.api.domain.user.dto.UserRequestDTO;
 import com.haubmannlucas.barbershop.api.domain.user.dto.UserResponseDTO;
 import com.haubmannlucas.barbershop.api.exception.EmailAlreadyExistsException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,8 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
@@ -55,5 +59,9 @@ public class UserService {
     @GetMapping
     public List<UserEntity> getAllUsers(){
         return userRepository.findAll();
+    }
+
+    public void processData(String input) {
+        logger.atInfo().setMessage("Processing data for input: {}").addArgument(input).log();
     }
 }
