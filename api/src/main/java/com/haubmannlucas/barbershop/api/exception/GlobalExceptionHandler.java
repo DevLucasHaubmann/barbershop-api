@@ -1,42 +1,50 @@
 package com.haubmannlucas.barbershop.api.exception;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ProblemDetail;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import java.time.Instant;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
-
     @ExceptionHandler(EmailAlreadyExistsException.class)
-    public ProblemDetail handleEmailAlreadyExists(EmailAlreadyExistsException ex) {
+    public ResponseEntity<ApiError> handleEmailAlreadyExists(EmailAlreadyExistsException ex) {
+        ApiError error = new ApiError(
+                HttpStatus.CONFLICT.value(),
+                ex.getErrorCode(),
+                ex.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+    }
 
-        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
-        problem.setTitle("This Email Already Exists.");
-        problem.setProperty("timestamp", Instant.now());
-
-        return problem;
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ApiError> handleDataIntegrityViolation(DataIntegrityViolationException ex) {
+        String specificCause = ex.getMostSpecificCause().getMessage();
+        if (specificCause != null && specificCause.toLowerCase().contains("email")) {
+            ApiError error = new ApiError(
+                    HttpStatus.CONFLICT.value(),
+                    "EMAIL_ALREADY_EXISTS",
+                    "The email provided is already in use."
+            );
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+        }
+        ApiError fallbackError = new ApiError(
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                "DATABASE_ERROR",
+                "A data integrity violation occurred."
+        );
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(fallbackError);
     }
 
     @ExceptionHandler(Exception.class)
-    public ProblemDetail handleGeneralException(Exception ex) {
-
-        logger.error("An unexpected server error occurred: ", ex);
-
-        ProblemDetail problem = ProblemDetail.forStatusAndDetail(
-                HttpStatus.INTERNAL_SERVER_ERROR,
-                "An unexpected error occurred. Please contact support."
+    public ResponseEntity<ApiError> handleGeneral(Exception ex) {
+        ApiError error = new ApiError(
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                "INTERNAL_SERVER_ERROR",
+                ex.getMessage()
         );
-
-        problem.setTitle("Internal Server Error");
-        problem.setProperty("timestamp", Instant.now());
-
-        return problem;
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
     }
 }
