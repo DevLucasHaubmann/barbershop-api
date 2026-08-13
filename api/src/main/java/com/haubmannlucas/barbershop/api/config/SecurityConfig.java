@@ -1,5 +1,6 @@
 package com.haubmannlucas.barbershop.api.config;
 
+import jakarta.servlet.DispatcherType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -23,6 +24,7 @@ public class SecurityConfig {
             .cors(Customizer.withDefaults())
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
+            .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
             .requestMatchers(HttpMethod.POST,"/api/v1/users").permitAll()
             .anyRequest().authenticated()
         );

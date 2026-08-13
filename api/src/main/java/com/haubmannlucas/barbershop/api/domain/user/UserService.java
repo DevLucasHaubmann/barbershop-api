@@ -2,6 +2,7 @@ package com.haubmannlucas.barbershop.api.domain.user;
 
 import com.haubmannlucas.barbershop.api.domain.user.dto.UserRequestDTO;
 import com.haubmannlucas.barbershop.api.domain.user.dto.UserResponseDTO;
+import com.haubmannlucas.barbershop.api.exception.EmailAlreadyExistsException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,10 @@ public class UserService {
 
     @PostMapping
     public UserResponseDTO createUser(@RequestBody UserRequestDTO request){
+        if (userRepository.existsByEmail(request.email())) {
+            throw new EmailAlreadyExistsException(request.email());
+        }
+
         UserEntity entity = new UserEntity();
 
         entity.setFirstName(request.firstName());
