@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
+    private final UserRepository userRepository;
     private final PasswordEncoder encoder;
 
     public UserService(UserRepository userRepository,  PasswordEncoder encoder) {
@@ -25,7 +26,7 @@ public class UserService {
     }
 
     @PostMapping
-    public UserResponseDTO createUser(@Valid @RequestBody UserRequestDTO request){
+    public UserResponseDTO createUser(@Valid @RequestBody UserRequestDTO request) {
 
         logger.info("Starting user registration for email: {}", request.email());
 
@@ -53,10 +54,10 @@ public class UserService {
                     .role(savedEntity.getRole())
                     .active(savedEntity.getActive())
                     .build();
-        }catch (DataIntegrityViolationException e){
-            if(e.getMessage() != null && e.getMessage().contains("email")){
+        } catch (DataIntegrityViolationException e) {
+            if(e.getMessage() != null && e.getMessage().contains("email")) {
                 logger.warn("Registration failed: Email {} is already in use", request.email());
-                throw new EmailAlreadyExistsException("This email already exists.");
+                throw new EmailAlreadyExistsException();
             }
             logger.warn("Registration failed: Internal Server Error.");
             throw e;
