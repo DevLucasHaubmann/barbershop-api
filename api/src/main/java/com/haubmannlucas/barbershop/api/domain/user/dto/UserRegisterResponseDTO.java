@@ -45,42 +45,34 @@ public class UserRegisterResponseDTO{
             this.id = id;
             return this;
         }
-
         public Builder firstName(String firstName) {
             this.firstName = firstName;
             return this;
         }
-
         public Builder lastName(String lastName) {
             this.lastName = lastName;
             return this;
         }
-
         public Builder email(String email) {
             this.email = email;
             return this;
         }
-
         public Builder ddd(String ddd) {
             this.ddd = ddd;
             return this;
         }
-
         public Builder phoneNumber(String phoneNumber) {
             this.phoneNumber = phoneNumber;
             return this;
         }
-
         public Builder role(UserRoles role) {
             this.role = role;
             return this;
         }
-
         public Builder active(Boolean active) {
             this.active = active;
             return this;
         }
-
         public UserRegisterResponseDTO build() {
             return new UserRegisterResponseDTO(this);
         }

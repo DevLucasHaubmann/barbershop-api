@@ -1,7 +1,7 @@
 package com.haubmannlucas.barbershop.api.domain.user;
 
-import com.haubmannlucas.barbershop.api.domain.user.dto.UserRequestDTO;
-import com.haubmannlucas.barbershop.api.domain.user.dto.UserResponseDTO;
+import com.haubmannlucas.barbershop.api.domain.user.dto.UserRegisterRequestDTO;
+import com.haubmannlucas.barbershop.api.domain.user.dto.UserRegisterResponseDTO;
 import com.haubmannlucas.barbershop.api.exception.EmailAlreadyExistsException;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -26,9 +26,9 @@ public class UserService {
     }
 
     @PostMapping
-    public UserResponseDTO createUser(@Valid @RequestBody UserRequestDTO request) {
+    public UserRegisterResponseDTO createUser(@Valid @RequestBody UserRegisterRequestDTO request) {
 
-        logger.info("Starting user registration for email: {}", request.email());
+        logger.info("Starting user registration for email: {}", maskEmail(request.email()));
 
         UserEntity entity = UserEntity.builder()
                 .firstName(request.firstName())
@@ -44,7 +44,7 @@ public class UserService {
             UserEntity savedEntity = userRepository.save(entity);
             logger.info("User successfully registered with ID: {}", savedEntity.getId());
 
-            return UserResponseDTO.builder()
+            return UserRegisterResponseDTO.builder()
                     .id(savedEntity.getId())
                     .firstName(savedEntity.getFirstName())
                     .lastName(savedEntity.getLastName())
@@ -62,5 +62,13 @@ public class UserService {
             logger.warn("Registration failed: Internal Server Error.");
             throw e;
         }
+    }
+
+    private String maskEmail(String email) {
+        if (email == null || !email.contains("@")) return "***";
+        String[] parts = email.split("@");
+        String name = parts[0];
+        if (name.length() <= 2) return "***@" + parts[1];
+        return name.charAt(0) + "***" + name.charAt(name.length() - 1) + "@" + parts[1];
     }
 }
