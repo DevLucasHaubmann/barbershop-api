@@ -2,8 +2,7 @@ package com.haubmannlucas.barbershop.api.domain.user.dto;
 
 import com.haubmannlucas.barbershop.api.domain.user.UserRoles;
 
-public class UserResponseDTO{
-
+public class UserRegisterResponseDTO {
     private Long id;
     private String firstName;
     private String lastName;
@@ -13,9 +12,9 @@ public class UserResponseDTO{
     private UserRoles role;
     private Boolean active;
 
-    public UserResponseDTO() {}
+    public UserRegisterResponseDTO() {}
 
-    public UserResponseDTO(Builder builder) {
+    private UserRegisterResponseDTO(Builder builder) {
         this.id = builder.id;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
@@ -30,8 +29,16 @@ public class UserResponseDTO{
         return new Builder();
     }
 
-    public static class Builder{
+    public Long getId() { return id; }
+    public String getFirstName() { return firstName; }
+    public String getLastName() { return lastName; }
+    public String getEmail() { return email; }
+    public String getDdd() { return ddd; }
+    public String getPhoneNumber() { return phoneNumber; }
+    public UserRoles getRole() { return role; }
+    public Boolean getActive() { return active; }
 
+    public static class Builder {
         private Long id;
         private String firstName;
         private String lastName;
@@ -45,44 +52,36 @@ public class UserResponseDTO{
             this.id = id;
             return this;
         }
-
         public Builder firstName(String firstName) {
             this.firstName = firstName;
             return this;
         }
-
         public Builder lastName(String lastName) {
             this.lastName = lastName;
             return this;
         }
-
         public Builder email(String email) {
             this.email = email;
             return this;
         }
-
         public Builder ddd(String ddd) {
             this.ddd = ddd;
             return this;
         }
-
         public Builder phoneNumber(String phoneNumber) {
             this.phoneNumber = phoneNumber;
             return this;
         }
-
         public Builder role(UserRoles role) {
             this.role = role;
             return this;
         }
-
         public Builder active(Boolean active) {
             this.active = active;
             return this;
         }
-
-        public UserResponseDTO build() {
-            return new UserResponseDTO(this);
+        public UserRegisterResponseDTO build() {
+            return new UserRegisterResponseDTO(this);
         }
     }
 }
