@@ -4,6 +4,8 @@ import com.haubmannlucas.barbershop.api.domain.user.dto.UserLoginRequestDTO;
 import com.haubmannlucas.barbershop.api.domain.user.dto.UserLoginResponseDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,23 +28,25 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<UserLoginResponseDTO> authenticateUser(@Valid @RequestBody UserLoginRequestDTO requestDTO) {
-
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        requestDTO.email(),
-                        requestDTO.password()
-                )
+                new UsernamePasswordAuthenticationToken(requestDTO.email(), requestDTO.password())
         );
-
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        assert userDetails != null;
         String jwt = jwtUtils.generateToken(userDetails.getUsername());
 
+        ResponseCookie jwtCookie = ResponseCookie.from("jwt", jwt)
+                .httpOnly(true)
+                .secure(false)
+                .path("/")
+                .maxAge(24 * 60 * 60)
+                .build();
+
         UserLoginResponseDTO response = UserLoginResponseDTO.builder()
-                .token(jwt)
                 .email(userDetails.getUsername())
                 .build();
 
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
+                .body(response);
     }
 }
