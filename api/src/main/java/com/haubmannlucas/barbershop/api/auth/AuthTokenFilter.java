@@ -28,6 +28,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     private AuthService userDetailsService;
 
     @Autowired
+    @Qualifier("handlerExceptionResolver")
     private HandlerExceptionResolver exceptionResolver;
 
     @Override
