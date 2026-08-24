@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 @Component
@@ -27,9 +30,13 @@ public class JwtUtil {
     }
 
     public String generateToken(String user) {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime expiration = now.plus(jwtExpirationMs, ChronoUnit.MILLIS);
+
         return Jwts.builder()
                 .subject(user)
-                .issuedAt(new Date()).expiration(new Date((new Date()).getTime() + jwtExpirationMs))
+                .issuedAt(Date.from(now.atZone(ZoneId.systemDefault()).toInstant()))
+                .expiration(Date.from(expiration.atZone(ZoneId.systemDefault()).toInstant()))
                 .signWith(key)
                 .compact();
     }
@@ -43,11 +50,11 @@ public class JwtUtil {
                 .getSubject();
     }
 
-    public boolean validateJwtToken(String token) {
+    public boolean isJwtValid(String token) {
         try {
             Jwts.parser().verifyWith(key).build().parseSignedClaims(token);
             return true;
-        } catch (JwtException | IllegalArgumentException err){
+        } catch (JwtException | IllegalArgumentException ex){
             return false;
         }
     }

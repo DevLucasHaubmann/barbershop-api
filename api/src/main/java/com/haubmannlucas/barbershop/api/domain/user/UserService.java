@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import static com.haubmannlucas.barbershop.api.utils.MaskEmail.maskEmail;
+
 @Service
 public class UserService {
 
@@ -62,13 +64,5 @@ public class UserService {
             logger.warn("Registration failed: Internal Server Error.");
             throw e;
         }
-    }
-
-    private String maskEmail(String email) {
-        if (email == null || !email.contains("@")) return "***";
-        String[] parts = email.split("@");
-        String name = parts[0];
-        if (name.length() <= 2) return "***@" + parts[1];
-        return name.charAt(0) + "***" + name.charAt(name.length() - 1) + "@" + parts[1];
     }
 }
