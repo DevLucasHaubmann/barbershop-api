@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4a9a419d-587d-40dc-a76e-9078fba7dc51" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Record" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;DevLucasHaubmann&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DevLucasHaubmann/barbershop-api.git&quot;,
+    &quot;accountId&quot;: &quot;ed28505e-5f59-4178-9a1c-0a7050d4c6a6&quot;
+  },
+  &quot;editorReviewEnabled&quot;: false
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/MainApplication.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/auth/JWTUtil.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/domain/user/dto/UserResponseDTO.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/exception/GlobalExceptionHandler.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3HjCEDgBSAykSplzLgoNO1Ka5F3" />
+  <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
+    <ConfirmationsSetting value="1" id="Add" />
+    <ConfirmationsSetting value="2" id="Remove" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.MainApplication.executor": "Debug",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "#3 on feat/login-system",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Lucas/OneDrive/Documents/git/barbershop-api/api/src/main/resources",
+    "node.js.detected.package.jshint": "true",
+    "node.js.selected.package.jshint": "",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
+  },
+  "keyToStringList": {
+    "GitStage.ChangesTree.GroupingKeys": [
+      "directory",
+      "module",
+      "repository"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lucas\OneDrive\Documents\git\barbershop-api\api\src\main\resources" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.haubmannlucas.barbershop.api.domain.user" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MainApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" value="local" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
+      <module name="api" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.haubmannlucas.barbershop.api.MainApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.haubmannlucas.barbershop.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.MainApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-34e2839f716b-intellij.indexing.shared.core-IU-262.9437.185" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.9437.185" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a9a419d-587d-40dc-a76e-9078fba7dc51" name="Changes" comment="" />
+      <created>1786371978822</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1786371978822</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix: Annotations were refactored." />
+    <MESSAGE value="feat: Global Exception handler and Api Error implemented for better error treatment." />
+    <MESSAGE value="feat: implement SLF4J logging in the service layer." />
+    <MESSAGE value="refactor: overhaul user registration architecture, validation, and global error handling&#10;- Restrict public `/api/v1/users` access strictly to HTTP POST methods.&#10;- Implement IoC by injecting BCryptPasswordEncoder via SecurityConfig @Bean.&#10;- Enforce DTO data integrity at the Controller layer using @Valid.&#10;- Implement pure Java Builder pattern in UserEntity and UserResponseDTO for safer, immutable object mapping.&#10;- Optimize database performance by replacing the SELECT email check with a try/catch block for DataIntegrityViolationException.&#10;- Standardize API error responses by adopting RFC 7807 (ProblemDetail) and @RestControllerAdvice, completely removing custom ApiError class.&#10;- Integrate SLF4J logging across the Service layer and Exception Handler to ensure production-level traceability.&#10;- Isolate development database configurations into a dedicated application-local.properties profile." />
+    <MESSAGE value="refactor: improve registration endpoint and email handling&#10;&#10;* Rename class for clarity&#10;* Add helper method to mask email addresses in log messages&#10;* Add unique constraint to the email attribute&#10;* Refactor the registration endpoint" />
+    <MESSAGE value="feat: implemented authentication method and JWT code generation&#10;&#10;* Added a JWT ultil class&#10;* AuthService for loading user data" />
+    <MESSAGE value="feat: implemented JWT validation and session management&#10;&#10;* Proper HandlerException class&#10;* Security configuration for a JWT feature&#10;* Auth token filter for any request" />
+    <MESSAGE value="refactor: Code now check for HttpOnly cookie instead of auth header&#10;&#10;* Accepts HttpOnly cookies for better security" />
+    <MESSAGE value="refactor: improved code legibility." />
+    <MESSAGE value="refactor: added qualifier annotation." />
+    <MESSAGE value="refactor: code quality improvement&#10;- spaces fixed&#10;- helper method for better code quality&#10;- wilds imports changed for standard ones." />
+    <MESSAGE value="fix: added filed to fix rebase conflict" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: added filed to fix rebase conflict" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/barbershop_api$MainApplication.ic" NAME="MainApplication Coverage Results" MODIFIED="1786558730543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.haubmannlucas.barbershop.api.*</FILTER>
+    </SUITE>
+  </component>
+</project>
