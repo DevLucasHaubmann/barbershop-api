@@ -1,7 +1,7 @@
 package com.haubmannlucas.barbershop.api.domain.user;
 
-import com.haubmannlucas.barbershop.api.domain.user.dto.UserRequestDTO;
-import com.haubmannlucas.barbershop.api.domain.user.dto.UserResponseDTO;
+import com.haubmannlucas.barbershop.api.domain.user.dto.UserRegisterRequestDTO;
+import com.haubmannlucas.barbershop.api.domain.user.dto.UserRegisterResponseDTO;
 import com.haubmannlucas.barbershop.api.exception.EmailAlreadyExistsException;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -12,13 +12,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import static com.haubmannlucas.barbershop.api.utils.MaskEmail.maskEmail;
-
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
+    private final UserRepository userRepository;
     private final PasswordEncoder encoder;
 
     public UserService(UserRepository userRepository,  PasswordEncoder encoder) {
@@ -27,7 +26,7 @@ public class UserService {
     }
 
     @PostMapping
-    public UserResponseDTO createUser(@Valid @RequestBody UserRequestDTO request){
+    public UserRegisterResponseDTO createUser(@Valid @RequestBody UserRegisterRequestDTO request){
 
         logger.info("Starting user registration for email: {}", request.email());
 
@@ -45,7 +44,7 @@ public class UserService {
             UserEntity savedEntity = userRepository.save(entity);
             logger.info("User successfully registered with ID: {}", savedEntity.getId());
 
-            return UserResponseDTO.builder()
+            return UserRegisterResponseDTO.builder()
                     .id(savedEntity.getId())
                     .firstName(savedEntity.getFirstName())
                     .lastName(savedEntity.getLastName())

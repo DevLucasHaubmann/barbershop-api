@@ -2,7 +2,7 @@ package com.haubmannlucas.barbershop.api.domain.user.dto;
 
 import com.haubmannlucas.barbershop.api.domain.user.UserRoles;
 
-public class UserResponseDTO{
+public class UserRegisterResponseDTO{
 
     private Long id;
     private String firstName;
@@ -13,9 +13,9 @@ public class UserResponseDTO{
     private UserRoles role;
     private Boolean active;
 
-    public UserResponseDTO() {}
+    public UserRegisterResponseDTO() {}
 
-    public UserResponseDTO(Builder builder) {
+    public UserRegisterResponseDTO(Builder builder) {
         this.id = builder.id;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
@@ -81,8 +81,8 @@ public class UserResponseDTO{
             return this;
         }
 
-        public UserResponseDTO build() {
-            return new UserResponseDTO(this);
+        public UserRegisterResponseDTO build() {
+            return new UserRegisterResponseDTO(this);
         }
     }
 }
