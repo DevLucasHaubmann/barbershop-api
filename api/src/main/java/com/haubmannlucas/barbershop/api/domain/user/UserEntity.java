@@ -6,11 +6,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import org.hibernate.annotations.Audited;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity(name = "Users")
-@Table(name = "users")
+@Audited.Table(name = "users")
 public class UserEntity {
 
     @Id
@@ -24,7 +24,7 @@ public class UserEntity {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @Column(name = "password", nullable = false)

@@ -12,12 +12,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import static com.haubmannlucas.barbershop.api.utils.MaskEmail.maskEmail;
+
 @Service
 public class UserService {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
-
     private final UserRepository userRepository;
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     private final PasswordEncoder encoder;
 
     public UserService(UserRepository userRepository,  PasswordEncoder encoder) {
@@ -26,7 +27,7 @@ public class UserService {
     }
 
     @PostMapping
-    public UserResponseDTO createUser(@Valid @RequestBody UserRequestDTO request) {
+    public UserResponseDTO createUser(@Valid @RequestBody UserRequestDTO request){
 
         logger.info("Starting user registration for email: {}", request.email());
 
@@ -54,10 +55,10 @@ public class UserService {
                     .role(savedEntity.getRole())
                     .active(savedEntity.getActive())
                     .build();
-        } catch (DataIntegrityViolationException e) {
-            if(e.getMessage() != null && e.getMessage().contains("email")) {
+        }catch (DataIntegrityViolationException e){
+            if(e.getMessage() != null && e.getMessage().contains("email")){
                 logger.warn("Registration failed: Email {} is already in use", request.email());
-                throw new EmailAlreadyExistsException();
+                throw new EmailAlreadyExistsException("This email already exists.");
             }
             logger.warn("Registration failed: Internal Server Error.");
             throw e;
