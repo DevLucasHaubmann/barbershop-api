@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import static com.haubmannlucas.barbershop.api.utils.MaskEmail.maskEmail;
+
 @Service
 public class UserService {
 
