@@ -1,6 +1,6 @@
 databaseChangeLog:
 - changeSet:
-    id: 1787593787438-1
+    id: 1787684499599-1
     author: Lucas (generated)
     changes:
     - createTable:
@@ -42,7 +42,37 @@ databaseChangeLog:
             type: VARCHAR(500)
         tableName: appointments
 - changeSet:
-    id: 1787593787438-2
+    id: 1787684499599-2
+    author: Lucas (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: user_id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+              unique: true
+            name: token
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: expiry_date
+            type: timestamp
+        tableName: refresh_token
+- changeSet:
+    id: 1787684499599-3
     author: Lucas (generated)
     changes:
     - createTable:
@@ -81,7 +111,7 @@ databaseChangeLog:
             type: BIT(1)
         tableName: shop_services
 - changeSet:
-    id: 1787593787438-3
+    id: 1787684499599-4
     author: Lucas (generated)
     changes:
     - createTable:
@@ -136,7 +166,7 @@ databaseChangeLog:
             type: BIT(1)
         tableName: users
 - changeSet:
-    id: 1787593787438-4
+    id: 1787684499599-5
     author: Lucas (generated)
     changes:
     - createIndex:
@@ -146,7 +176,7 @@ databaseChangeLog:
         indexName: barber_id
         tableName: appointments
 - changeSet:
-    id: 1787593787438-5
+    id: 1787684499599-6
     author: Lucas (generated)
     changes:
     - createIndex:
@@ -156,7 +186,7 @@ databaseChangeLog:
         indexName: customer_id
         tableName: appointments
 - changeSet:
-    id: 1787593787438-6
+    id: 1787684499599-7
     author: Lucas (generated)
     changes:
     - createIndex:
@@ -166,7 +196,17 @@ databaseChangeLog:
         indexName: service_id
         tableName: appointments
 - changeSet:
-    id: 1787593787438-7
+    id: 1787684499599-8
+    author: Lucas (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: user_id
+        indexName: user_id
+        tableName: refresh_token
+- changeSet:
+    id: 1787684499599-9
     author: Lucas (generated)
     changes:
     - addForeignKeyConstraint:
@@ -181,7 +221,7 @@ databaseChangeLog:
         referencedTableName: users
         validate: true
 - changeSet:
-    id: 1787593787438-8
+    id: 1787684499599-10
     author: Lucas (generated)
     changes:
     - addForeignKeyConstraint:
@@ -196,7 +236,7 @@ databaseChangeLog:
         referencedTableName: users
         validate: true
 - changeSet:
-    id: 1787593787438-9
+    id: 1787684499599-11
     author: Lucas (generated)
     changes:
     - addForeignKeyConstraint:
@@ -209,5 +249,20 @@ databaseChangeLog:
         onUpdate: RESTRICT
         referencedColumnNames: id
         referencedTableName: shop_services
+        validate: true
+- changeSet:
+    id: 1787684499599-12
+    author: Lucas (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: user_id
+        baseTableName: refresh_token
+        constraintName: refresh_token_ibfk_1
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: id
+        referencedTableName: users
         validate: true
 
