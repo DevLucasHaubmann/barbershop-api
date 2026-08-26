@@ -39,8 +39,6 @@ public class AuthController {
     private RefreshTokenService refreshTokenService;
     private UserRepository userRepository;
 
-    public AuthController() {}
-
     public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtils, RefreshTokenService refreshTokenService, UserRepository userRepository) {
         this.authenticationManager = authenticationManager;
         this.jwtUtils = jwtUtils;
