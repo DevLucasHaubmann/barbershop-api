@@ -21,31 +21,34 @@ public class RefreshTokenService {
 
     private final JwtUtil jwtUtils;
 
-    @Value("${jwt.refreshExpirationMs}")
-    private Long refreshTokenDurationMs;
+    private final Long refreshTokenDurationMs;
 
-    public RefreshTokenService(RefreshTokenRepository repo, UserRepository userRepo, JwtUtil jwtUtils) {
+    public RefreshTokenService(
+            RefreshTokenRepository repo,
+            UserRepository userRepo,
+            JwtUtil jwtUtils,
+            @Value("${jwt.refreshExpirationMs}") Long refreshTokenDurationMs) {
+
         this.refreshTokenRepository = repo;
         this.userRepository = userRepo;
         this.jwtUtils = jwtUtils;
+        this.refreshTokenDurationMs = refreshTokenDurationMs;
     }
 
-    @Transactional
     public RefreshTokenEntity createRefreshToken(String email) {
         UserEntity user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
         var token = new RefreshTokenEntity();
         token.setUser(user);
-        token.setExpiryDate(Instant.now().plusMillis(refreshTokenDurationMs));
+        token.setExpiration(Instant.now().plusMillis(refreshTokenDurationMs));
         token.setToken(UUID.randomUUID().toString());
 
         return refreshTokenRepository.save(token);
     }
 
-    @Transactional
     public RefreshTokenEntity verifyExpiration(RefreshTokenEntity token) {
-        if (token.getExpiryDate().isBefore(Instant.now())) {
+        if (token.getExpiration().isBefore(Instant.now())) {
             refreshTokenRepository.delete(token);
             throw new TokenRefreshException();
         }
@@ -56,14 +59,12 @@ public class RefreshTokenService {
         return refreshTokenRepository.findByToken(token);
     }
 
-    @Transactional
     public void deleteByUsername(String email) {
         UserEntity user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         refreshTokenRepository.deleteByUser(user);
     }
 
-    @Transactional
     public String processRefresh(String requestRefreshToken) {
         return refreshTokenRepository.findByToken(requestRefreshToken)
                 .map(this::verifyExpiration)
@@ -72,7 +73,6 @@ public class RefreshTokenService {
                 .orElseThrow(() -> new TokenRefreshException("Refresh token is not in database."));
     }
 
-    @Transactional
     public AuthTokenPayload generateTokensForUser(String email) {
         String jwt = jwtUtils.generateToken(email);
 

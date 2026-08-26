@@ -14,6 +14,7 @@ import com.haubmannlucas.barbershop.api.exception.TokenRefreshException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,24 +28,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/auth")
 public class AuthController {
 
-    @Autowired
     private AuthenticationManager authenticationManager;
-
-    @Autowired
     private JwtUtil jwtUtils;
-
-    @Autowired
     private RefreshTokenService refreshTokenService;
-
-    @Autowired
     private UserRepository userRepository;
+
+    public AuthController() {}
+
+    public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtils, RefreshTokenService refreshTokenService, UserRepository userRepository) {
+        this.authenticationManager = authenticationManager;
+        this.jwtUtils = jwtUtils;
+        this.refreshTokenService = refreshTokenService;
+        this.userRepository = userRepository;
+    }
 
     @PostMapping("/login")
     public ResponseEntity<UserLoginResponseDTO> authenticateUser(@Valid @RequestBody UserLoginRequestDTO requestDTO) {
@@ -53,17 +55,17 @@ public class AuthController {
                 new UsernamePasswordAuthenticationToken(requestDTO.email(), requestDTO.password())
         );
 
-        String email = ((UserDetails) authentication.getPrincipal()).getUsername();
+        String email = extractEmail(authentication);
 
-        AuthTokenPayload tokens = refreshTokenService.generateTokensForUser(email);
+        AuthTokenPayload tokenPayload = refreshTokenService.generateTokensForUser(email);
 
-        ResponseCookie jwtCookie = jwtUtils.getJwtCookie(tokens.jwt());
+        ResponseCookie jwtCookie = jwtUtils.getJwtCookie(tokenPayload.jwt());
         UserLoginResponseDTO response = UserLoginResponseDTO.builder()
                 .email(email)
-                .token(tokens.refreshToken())
+                .token(tokenPayload.refreshToken())
                 .build();
 
-        return ResponseEntity.ok()
+        return ResponseEntity.status(HttpStatus.CREATED)
                 .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
                 .body(response);
     }
@@ -77,7 +79,7 @@ public class AuthController {
 
         ResponseCookie cleanCookie = jwtUtils.getCleanJwtCookie();
 
-        return ResponseEntity.ok()
+        return ResponseEntity.noContent()
                 .header(HttpHeaders.SET_COOKIE, cleanCookie.toString())
                 .build();
     }
@@ -93,8 +95,12 @@ public class AuthController {
                 .token(newJwtToken)
                 .build();
 
-        return ResponseEntity.ok()
+        return ResponseEntity.status(HttpStatus.CREATED)
                 .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
                 .body(response);
+    }
+
+    private String extractEmail(Authentication authentication) {
+        return ((UserDetails) authentication.getPrincipal()).getUsername();
     }
 }

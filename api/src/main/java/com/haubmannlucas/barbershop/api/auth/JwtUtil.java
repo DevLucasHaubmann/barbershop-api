@@ -17,6 +17,8 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
+    private static final long JWT_COOKIE_MAX_AGE_SECONDS = 24 * 60 * 60;
+
     @Value("${jwt.secret}")
     private String jwtSecret;
 
@@ -74,7 +76,7 @@ public class JwtUtil {
                 .httpOnly(true)
                 .secure(false)
                 .path("/")
-                .maxAge(24 * 60 * 60)
+                .maxAge(JWT_COOKIE_MAX_AGE_SECONDS)
                 .build();
     }
 

@@ -1,5 +1,6 @@
-changeLogFile=src/main/resources/db/changelog/db.changelog-master.xml
-outputChangelogFormat=xml
+changeLogFile=src/main/resources/db/changelog/db.changelog-master.ymal
+outputChangelogFormat=ymal
+
 logLevel=info
 
 url={url}

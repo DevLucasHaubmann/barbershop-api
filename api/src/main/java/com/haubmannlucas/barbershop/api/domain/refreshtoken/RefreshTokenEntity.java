@@ -7,8 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.Instant;
 
@@ -21,7 +20,7 @@ public class RefreshTokenEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToOne
+    @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private UserEntity user;
 
@@ -29,7 +28,7 @@ public class RefreshTokenEntity {
     private String token;
 
     @Column(name = "expiry_date",nullable = false)
-    private Instant expiryDate;
+    private Instant expiration;
 
     public RefreshTokenEntity() {}
 
@@ -37,7 +36,7 @@ public class RefreshTokenEntity {
         this.id = builder.id;
         this.user = builder.user;
         this.token = builder.token;
-        this.expiryDate = builder.expiryDate;
+        this.expiration = builder.expiration;
     }
 
     public static Builder builder() {
@@ -48,7 +47,7 @@ public class RefreshTokenEntity {
         private Long id;
         private UserEntity user;
         private String token;
-        private Instant expiryDate;
+        private Instant expiration;
 
         public Builder id(Long id) {
         this.id = id;
@@ -65,8 +64,8 @@ public class RefreshTokenEntity {
             return this;
         }
 
-        public Builder expiryDate(Instant expiryDate) {
-            this.expiryDate = expiryDate;
+        public Builder expiration(Instant expiration) {
+            this.expiration = expiration;
             return this;
         }
 
@@ -96,11 +95,11 @@ public class RefreshTokenEntity {
         this.token = token;
     }
 
-    public Instant getExpiryDate() {
-        return expiryDate;
+    public Instant getExpiration() {
+        return expiration;
     }
 
-    public void setExpiryDate(Instant expiryDate) {
-        this.expiryDate = expiryDate;
+    public void setExpiration(Instant expiration) {
+        this.expiration = expiration;
     }
 }
