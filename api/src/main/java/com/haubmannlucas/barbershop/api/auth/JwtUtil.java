@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
@@ -15,6 +16,8 @@ import java.util.Date;
 
 @Component
 public class JwtUtil {
+
+    private static final long JWT_COOKIE_MAX_AGE_SECONDS = 24 * 60 * 60;
 
     @Value("${jwt.secret}")
     private String jwtSecret;
@@ -58,4 +61,24 @@ public class JwtUtil {
             return false;
         }
     }
+
+    public ResponseCookie getCleanJwtCookie() {
+        return ResponseCookie.from("jwt", "")
+                .httpOnly(true)
+                .secure(false)
+                .path("/")
+                .maxAge(0)
+                .build();
+    }
+
+    public ResponseCookie getJwtCookie(String token) {
+        return ResponseCookie.from("jwt", token)
+                .httpOnly(true)
+                .secure(false)
+                .path("/")
+                .maxAge(JWT_COOKIE_MAX_AGE_SECONDS)
+                .build();
+    }
+
+
 }

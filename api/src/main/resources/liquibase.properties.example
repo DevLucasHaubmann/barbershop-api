@@ -1,0 +1,14 @@
+changeLogFile=src/main/resources/db/changelog/db.changelog-master.ymal
+outputChangelogFormat=ymal
+
+logLevel=info
+
+url={url}
+username={user}
+password={password}
+driver={driver}
+
+referenceUrl={url}
+referenceUsername={referenceUsername}
+referencePassword={referencePassword}
+referenceDriver={referenceDriver}

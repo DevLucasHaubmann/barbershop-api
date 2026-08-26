@@ -26,6 +26,14 @@ public class GlobalExceptionHandler {
         return problem;
     }
 
+    @ExceptionHandler(TokenRefreshException.class)
+    public ProblemDetail handleTokenRefreshException(TokenRefreshException ex) {
+        logger.warn("Refresh token error: {}", ex.getMessage());
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.FORBIDDEN, ex.getMessage());
+        enrichProblemDetail(problem, "Token refresh failed.");
+        return problem;
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ProblemDetail handleValidationExceptions(MethodArgumentNotValidException ex) {
         String errorMessage = ex.getBindingResult().getFieldErrors().stream()
