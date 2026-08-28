@@ -18,6 +18,7 @@ import java.util.Date;
 public class JwtUtil {
 
     private static final long JWT_COOKIE_MAX_AGE_SECONDS = 24 * 60 * 60;
+    private static final long JWT_REFRESH_COOKIE_MAX_AGE_SECONDS = 7 * 24 * 60 * 60;
 
     @Value("${jwt.secret}")
     private String jwtSecret;
@@ -80,5 +81,21 @@ public class JwtUtil {
                 .build();
     }
 
+    public ResponseCookie getCleanRefreshJwtCookie() {
+        return ResponseCookie.from("refresh-jwt", "")
+                .httpOnly(true)
+                .secure(false)
+                .path("/api/v1/auth/refresh")
+                .maxAge(0)
+                .build();
+    }
 
+    public ResponseCookie getRefreshJwtCookie(String token) {
+        return ResponseCookie.from("refresh-jwt", token)
+                .httpOnly(true)
+                .secure(false)
+                .path("/api/v1/auth/refresh")
+                .maxAge(JWT_REFRESH_COOKIE_MAX_AGE_SECONDS)
+                .build();
+    }
 }
