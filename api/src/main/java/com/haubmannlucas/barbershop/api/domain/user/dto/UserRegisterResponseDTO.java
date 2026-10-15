@@ -30,6 +30,38 @@ public class UserRegisterResponseDTO{
         return new Builder();
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDdd() {
+        return ddd;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public UserRoles getRole() {
+        return role;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
     public static class Builder{
 
         private Long id;

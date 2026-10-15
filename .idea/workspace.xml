@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="381db888-4efe-4d57-a3f9-f107de01f54e" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Record" />
+        <option value="Class" />
+        <option value="Exception" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;DevLucasHaubmann&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DevLucasHaubmann/barbershop-api.git&quot;,
+    &quot;accountId&quot;: &quot;ed28505e-5f59-4178-9a1c-0a7050d4c6a6&quot;
+  },
+  &quot;editorReviewEnabled&quot;: false
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/api/pom.xml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/auth/AuthController.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/domain/refreshtoken/RefreshTokenEntity.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/domain/refreshtoken/RefreshTokenRepository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/domain/refreshtoken/RefreshTokenService.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/domain/shopservices/ShopServiceEntity.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/domain/shopservices/ShopServiceRepository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/domain/shopservices/ShopServiceService.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/domain/shopservices/dto/ShopServiceRequestDTO.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/domain/shopservices/dto/ShopServiceResponseDTO.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/domain/user/dto/UserRegisterResponseDTO.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/exception/GlobalExceptionHandler.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/api/src/main/java/com/haubmannlucas/barbershop/api/exception/TokenRefreshException.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="3IN5Apa2WTmRWZ29bgAA8rpJo8C" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+    <ConfirmationsSetting value="1" id="Remove" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SHELLCHECK.PATH": "C:\\Users\\Lucas\\AppData\\Roaming\\JetBrains\\IntelliJIdea2026.2\\plugins\\Shell Script\\shellcheck.exe",
+    "Spring Boot.MainApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "feat/shop-services-creation",
+    "git.auto.fetch.suggestion.counter": "3",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.selected.package.jshint": "",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "terminal"
+  },
+  "keyToStringList": {
+    "GitStage.ChangesTree.GroupingKeys": [
+      "directory",
+      "module",
+      "repository"
+    ]
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="MainApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" value="local" />
+      <module name="api" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.haubmannlucas.barbershop.api.MainApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="381db888-4efe-4d57-a3f9-f107de01f54e" name="Changes" comment="" />
+      <created>1787592046340</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1787592046340</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: added Liquibase folder into project structure." />
+    <MESSAGE value="refactor: improved login endpoint method for better code quality" />
+    <MESSAGE value="feat: added refresh token system with its own exception" />
+    <MESSAGE value="feat: new db schema" />
+    <MESSAGE value="refactor: optimize token service and migrate Liquibase changelog to SQL&#10;&#10;* Remove redundant @Transactional annotations in RefreshTokenService to prevent open-connection overhead and fix the expiration deletion bug.&#10;* Refactor @Value injection to use the constructor, ensuring class immutability.&#10;* Migrate Liquibase baseline schemas from YAML to native SQL for better reviewability and explicit index control." />
+    <MESSAGE value="refactor: Formatting baseline-schema file and deleting controller contructor" />
+    <MESSAGE value="fix: refreshtoken is now being saved as httponly cookie." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: refreshtoken is now being saved as httponly cookie." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -26,7 +26,7 @@ CREATE TABLE shop_services (
                                service_name VARCHAR(100) NOT NULL,
                                service_description VARCHAR(500) NOT NULL,
                                duration_minutes INT NOT NULL,
-                               price DECIMAL(5, 2) NOT NULL,
+                               servicePrice DECIMAL(5, 2) NOT NULL,
                                active BIT(1) NOT NULL,
                                CONSTRAINT pk_shop_services PRIMARY KEY (id)
 );
