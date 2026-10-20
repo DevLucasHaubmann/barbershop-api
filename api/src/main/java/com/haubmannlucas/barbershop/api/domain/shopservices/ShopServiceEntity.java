@@ -30,7 +30,7 @@ public class ShopServiceEntity {
     private BigDecimal servicePrice;
 
     @Column(name="active", nullable = false)
-    private Boolean active;
+    private boolean active = true;
 
     public ShopServiceEntity() {}
 
@@ -54,7 +54,7 @@ public class ShopServiceEntity {
         private String serviceDescription;
         private Integer serviceDuration;
         private BigDecimal servicePrice;
-        private Boolean active;
+        private Boolean active = true;
 
         public Builder id(Long id) {
             this.id = id;

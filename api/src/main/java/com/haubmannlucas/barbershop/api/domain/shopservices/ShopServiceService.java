@@ -29,7 +29,7 @@ public class ShopServiceService {
 
         if (shopServiceRepository.existsByServiceName(request.serviceName())) {
             logger.warn("Registration failed: Service Name {} is already in use", request.serviceName());
-            throw new NameAlreadyExistsException();
+            throw new NameAlreadyExistsException(request.serviceName());
         }
 
         ShopServiceEntity entity = ShopServiceEntity.builder()

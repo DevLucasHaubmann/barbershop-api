@@ -21,7 +21,5 @@ public record ShopServiceRequestDTO(
    @NotNull(message = "Service servicePrice is required.")
    @Positive(message = "Service servicePrice must be a positive value.")
    @Digits(integer = 8, fraction = 2, message = "Service servicePrice must have between 0 to 8 digits.")
-   BigDecimal servicePrice,
-
-   Boolean active
-) {}
+   BigDecimal servicePrice)
+{}

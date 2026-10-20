@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NameAlreadyExistsException.class)
     public ProblemDetail handleNameAlreadyExistsException(NameAlreadyExistsException ex) {
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
-        enrichProblemDetail(problem, "This Name Already Exists.");
+        enrichProblemDetail(problem, "Duplicate Service Name.");
         return problem;
     }
 
