@@ -1,6 +1,5 @@
 package com.haubmannlucas.barbershop.api.domain.user.dto;
 
-import com.haubmannlucas.barbershop.api.domain.user.UserRoles;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -27,9 +26,5 @@ public record UserRegisterRequestDTO(
         String ddd,
 
         @Pattern(regexp="^[0-9]{8,9}$", message = "Invalid phone number")
-        String phoneNumber,
-
-        UserRoles role,
-
-        Boolean active
+        String phoneNumber
 ){}

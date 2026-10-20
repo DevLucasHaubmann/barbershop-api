@@ -34,6 +34,13 @@ public class GlobalExceptionHandler {
         return problem;
     }
 
+    @ExceptionHandler(NameAlreadyExistsException.class)
+    public ProblemDetail handleNameAlreadyExistsException(NameAlreadyExistsException ex) {
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
+        enrichProblemDetail(problem, "Duplicate Service Name.");
+        return problem;
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ProblemDetail handleValidationExceptions(MethodArgumentNotValidException ex) {
         String errorMessage = ex.getBindingResult().getFieldErrors().stream()

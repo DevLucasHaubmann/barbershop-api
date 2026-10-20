@@ -9,8 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity(name = "Users")
-@Table(name = "users")
+@Entity(name = "User")
+@Table(name = "user")
 public class UserEntity {
 
     @Id
