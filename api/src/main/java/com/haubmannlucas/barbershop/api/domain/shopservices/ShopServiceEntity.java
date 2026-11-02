@@ -26,7 +26,7 @@ public class ShopServiceEntity {
     @Column(name="duration_minutes",   nullable = false)
     private Integer serviceDuration;
 
-    @Column(name="price", nullable = false)
+    @Column(name="service_price", nullable = false)
     private BigDecimal servicePrice;
 
     @Column(name="active", nullable = false)
